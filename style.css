@@ -1,47 +1,47 @@
 /* -------------------------------------------------------
    Typesetting: Libre Caslon Display (headings) + IBM Plex Serif (body)
-   Structure: mirrors skrapsmd.github.io — sharp corners, tab nav, page layout
-   Palette: Foreign Affairs navy / cream / gold
+   Structure: mirrors skrapsmd.github.io — sharp corners, tab nav, pages
+   Palette: Foreign Affairs / mid-century editorial
 ------------------------------------------------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-/* ── Tokens ── */
+/* ══ DESIGN TOKENS ══════════════════════════════════════ */
 :root {
   /* Palette */
-  --navy:       #0b1726;
-  --navy-mid:   #162236;
-  --navy-lt:    #1e3050;
-  --gold:       #a8832a;
-  --gold-lt:    #c9a84c;
-  --cream:      #f3ede2;
-  --cream-dk:   #e6ddd0;
-  --ink:        #18130c;
-  --ink-mid:    #3d342a;
-  --muted:      #7a6e60;
-  --rule:       #c8bfb0;
-  --white:      #ffffff;
+  --ink:           #1C1F2B;   /* near-black, navy-tinged                   */
+  --parchment:     #F5F1E8;   /* warm off-white — good paper stock          */
+  --bone:          #EDE9DE;   /* slightly darker parchment, alt fills       */
+  --rule:          #C8C2B0;   /* warm greige for dividers                   */
+  --midnight:      #1A2744;   /* deep authoritative navy — nav / hero       */
+  --midnight-mid:  #243660;   /* slightly lighter midnight for hover bg     */
+  --garnet:        #6B1F2A;   /* jewel-tone — section heads, active states  */
+  --pale-gold:     #D4B87A;   /* pale gold — text/ornament on dark bg       */
+  --warm-gold:     #C4A45E;   /* richer gold — hairlines on light bg        */
+  --teal:          #2E7B7A;   /* Atomic Teal — links, interactive states    */
+  --terracotta:    #B5522B;   /* Eames Terracotta — spot / callout color    */
+  --jetscream:     #F2E8C8;   /* Jetsons Cream — blockquote fills           */
+  --white:         #FFFFFF;
+  --muted:         #7A7265;   /* desaturated mid-tone for secondary text    */
 
-  /* Type */
-  --caslon:     'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
-  --caslon-text:'Libre Caslon Text', Georgia, serif;
-  --plex-serif: 'IBM Plex Serif', Georgia, serif;
-  --plex-mono:  'IBM Plex Mono', 'Courier New', monospace;
+  /* Type stacks */
+  --caslon:      'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
+  --caslon-text: 'Libre Caslon Text', Georgia, serif;
+  --plex-serif:  'IBM Plex Serif', Georgia, serif;
+  --plex-mono:   'IBM Plex Mono', 'Courier New', monospace;
 
   /* Layout */
-  --max-w:      860px;
-  --pad-x:      1.5rem;
-
-  /* Sharp corners — mirrors reference site's border-radius: 0 */
-  --radius:     0;
+  --max-w:  860px;
+  --pad-x:  1.5rem;
+  --radius: 0;           /* sharp corners everywhere, matching reference */
 }
 
-/* ── Reset ── */
+/* ══ RESET & BASE ═══════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 17px; scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  background: var(--parchment);
   color: var(--ink);
   font-family: var(--plex-serif);
   line-height: 1.75;
@@ -50,11 +50,9 @@ body {
 
 a { color: inherit; }
 
-/* ─────────────────────────────────────────────────
-   HEADER
-───────────────────────────────────────────────── */
+/* ══ HEADER ═════════════════════════════════════════════ */
 #site-header {
-  background: var(--navy);
+  background: var(--midnight);
   color: var(--white);
 }
 
@@ -67,7 +65,7 @@ a { color: inherit; }
 .site-name {
   font-family: var(--caslon);
   font-size: clamp(1.75rem, 4.5vw, 2.75rem);
-  font-weight: 400;             /* Caslon reads best at normal weight */
+  font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.1;
   color: var(--white);
@@ -77,26 +75,24 @@ a { color: inherit; }
 
 .site-byline {
   font-family: var(--plex-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-lt);
+  color: var(--pale-gold);
   margin-top: 0.45rem;
 }
 
-/* Gold rule beneath name, above nav */
+/* Warm-gold rule beneath name, above nav */
 .header-rule {
   height: 2px;
-  background: var(--gold);
+  background: var(--warm-gold);
   margin-top: 1.25rem;
 }
 
-/* ─────────────────────────────────────────────────
-   NAV RIBBON
-───────────────────────────────────────────────── */
+/* ══ NAV RIBBON ══════════════════════════════════════════ */
 #site-nav {
-  background: var(--navy-mid);
-  border-bottom: 1px solid var(--navy-lt);
+  background: var(--midnight);
+  border-bottom: 1px solid var(--midnight-mid);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -110,16 +106,16 @@ a { color: inherit; }
   align-items: stretch;
 }
 
-/* Each nav tab — sharp corners, no radius */
+/* Each tab — sharp corners, no radius (reference: border-radius: 0) */
 .nav-inner a {
   display: inline-flex;
   align-items: center;
   padding: 0.7rem 1.05rem;
   font-family: var(--plex-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cream-dk);
+  color: var(--bone);
   text-decoration: none;
   border-bottom: 3px solid transparent;
   border-radius: var(--radius);
@@ -132,37 +128,33 @@ a { color: inherit; }
   background: rgba(255,255,255,0.06);
 }
 
-/* Active tab: gold bottom border, no rounded corners */
+/* Active tab: pale-gold bottom border — garnet would be too heavy here */
 .nav-inner a.active {
   color: var(--white);
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--pale-gold);
   background: rgba(255,255,255,0.04);
 }
 
-/* ─────────────────────────────────────────────────
-   PAGE WRAPPER
-───────────────────────────────────────────────── */
+/* ══ PAGE MAIN ═══════════════════════════════════════════ */
 #page-main {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 2.75rem var(--pad-x) 5rem;
 }
 
-/* ─────────────────────────────────────────────────
-   PAGE HEADER (per-page title block)
-───────────────────────────────────────────────── */
+/* ══ PAGE HEADER (per-page title block) ════════════════════ */
 .page-header {
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--navy);
+  border-bottom: 2px solid var(--ink);
   margin-bottom: 2.25rem;
 }
 
 .page-kicker {
   font-family: var(--plex-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--warm-gold);
   margin-bottom: 0.5rem;
 }
 
@@ -171,7 +163,7 @@ a { color: inherit; }
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 400;
   line-height: 1.15;
-  color: var(--navy);
+  color: var(--midnight);
   letter-spacing: 0.01em;
 }
 
@@ -179,20 +171,39 @@ a { color: inherit; }
   font-family: var(--plex-serif);
   font-size: 1rem;
   font-style: italic;
-  color: var(--ink-mid);
+  color: var(--muted);
   margin-top: 0.75rem;
   max-width: 56ch;
 }
 
-/* ─────────────────────────────────────────────────
-   SECTION LABEL (inline ribbon tab above section)
-───────────────────────────────────────────────── */
+/* ══ SECTION HEADER (FA-style: italic garnet + hairline rule) */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin-bottom: 0;
+  margin-top: 2.5rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-head-title {
+  font-family: var(--caslon-text);
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--garnet);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ══ SECTION LABEL (ribbon chip — nav/badges on inner pages) */
 .section-label {
   display: inline-block;
-  background: var(--navy);
-  color: var(--gold-lt);
+  background: var(--midnight);
+  color: var(--pale-gold);
   font-family: var(--plex-mono);
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 0.22rem 0.65rem;
@@ -200,16 +211,14 @@ a { color: inherit; }
   border-radius: var(--radius);
 }
 
-/* ─────────────────────────────────────────────────
-   BUTTON (matches reference: sharp, IBM-flavored)
-───────────────────────────────────────────────── */
+/* ══ BUTTONS (sharp, IBM Carbon–flavored) ════════════════ */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 1rem;
   font-family: var(--plex-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -222,34 +231,40 @@ a { color: inherit; }
 
 .btn-default {
   background: transparent;
-  color: var(--navy);
-  border-color: var(--navy);
+  color: var(--midnight);
+  border-color: var(--midnight);
 }
-.btn-default:hover { background: var(--navy); color: var(--white); }
+.btn-default:hover { background: var(--midnight); color: var(--white); }
 
 .btn-primary {
-  background: var(--navy);
+  background: var(--midnight);
   color: var(--white);
-  border-color: var(--navy);
+  border-color: var(--midnight);
 }
-.btn-primary:hover { background: var(--navy-lt); }
+.btn-primary:hover { background: var(--midnight-mid); }
 
 .btn-ghost {
   background: transparent;
   color: var(--muted);
   border-color: var(--rule);
 }
-.btn-ghost:hover { color: var(--navy); border-color: var(--navy); }
+.btn-ghost:hover { color: var(--midnight); border-color: var(--midnight); }
 
-/* ─────────────────────────────────────────────────
-   HOME PAGE — two-column intro layout
-───────────────────────────────────────────────── */
+.btn-garnet {
+  background: var(--garnet);
+  color: var(--white);
+  border-color: var(--garnet);
+}
+.btn-garnet:hover { opacity: 0.88; }
+
+/* ══ HOME PAGE ══════════════════════════════════════════ */
+
+/* Two-column intro: bio left, portrait right */
 .home-grid {
   display: grid;
-  grid-template-columns: 1fr 220px;
+  grid-template-columns: 1fr 210px;
   gap: 2.5rem;
   align-items: start;
-  margin-bottom: 2.5rem;
 }
 
 @media (max-width: 600px) {
@@ -259,93 +274,115 @@ a { color: inherit; }
 .home-portrait {
   width: 100%;
   display: block;
-  border: 2px solid var(--navy);
+  border: 2px solid var(--midnight);
+}
+
+.portrait-placeholder {
+  background: var(--midnight-mid);
+  color: var(--pale-gold);
+  font-family: var(--caslon);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1rem;
+  border: 2px solid var(--midnight);
+  text-align: center;
+  font-size: 0.95rem;
 }
 
 .portrait-caption {
   font-family: var(--plex-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
   color: var(--muted);
   margin-top: 0.4rem;
   text-align: center;
 }
 
+/* Bio prose */
 .home-bio p {
   font-family: var(--plex-serif);
   font-size: 1rem;
   margin-bottom: 1rem;
-  line-height: 1.75;
+  line-height: 1.78;
+  color: var(--ink);
 }
 
-/* Drop cap on first paragraph */
+/* Drop cap — FA style, large Caslon initial */
 .drop-cap::first-letter {
   font-family: var(--caslon);
-  font-size: 3.5rem;
+  font-size: 3.6rem;
   font-weight: 400;
   float: left;
   line-height: 0.78;
-  margin: 0.05rem 0.12rem 0 0;
-  color: var(--navy);
+  margin: 0.05rem 0.14rem 0 0;
+  color: var(--midnight);
 }
 
-/* Contact table on home page */
+/* ── Contact / staff table — mirrors FA's credits typography */
 .contact-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--plex-mono);
-  font-size: 0.78rem;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .contact-table th {
-  text-align: left;
-  letter-spacing: 0.1em;
+  font-family: var(--plex-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-size: 0.65rem;
   color: var(--muted);
-  padding: 0.5rem 0.75rem 0.5rem 0;
+  padding: 0.45rem 0.8rem 0.45rem 0;
   border-bottom: 1px solid var(--rule);
+  text-align: left;
 }
 
 .contact-table td {
-  padding: 0.5rem 0.75rem 0.5rem 0;
-  border-bottom: 1px solid var(--cream-dk);
+  font-family: var(--plex-serif);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem 0.5rem 0;
+  border-bottom: 1px solid var(--bone);
   color: var(--ink);
   vertical-align: top;
 }
 
-.contact-table td a {
-  color: var(--navy);
-  text-decoration: none;
-  border-bottom: 1px solid var(--gold);
+.contact-table td.field-label {
+  font-family: var(--plex-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+  width: 7rem;
 }
-.contact-table td a:hover { color: var(--gold); }
 
-/* ─────────────────────────────────────────────────
-   ENTRY LIST (research / writing / cv rows)
-───────────────────────────────────────────────── */
-.entry-list {
-  list-style: none;
+.contact-table a {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.12s;
 }
+.contact-table a:hover { border-bottom-color: var(--teal); }
+
+/* ══ ENTRY LIST (research / writing / CV rows) ══════════ */
+.entry-list { list-style: none; }
 
 .entry {
-  padding: 1.35rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--rule);
   display: grid;
   grid-template-columns: 3.5rem 1fr;
   gap: 0 1.25rem;
   align-items: start;
 }
-
 .entry:first-child { border-top: 1px solid var(--rule); }
 
 .entry-year {
   font-family: var(--plex-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  color: var(--gold);
-  padding-top: 0.18rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--warm-gold);
+  padding-top: 0.2rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -353,9 +390,9 @@ a { color: inherit; }
   font-family: var(--caslon-text);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--midnight);
   line-height: 1.3;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .entry-title a {
@@ -364,49 +401,54 @@ a { color: inherit; }
   border-bottom: 1px solid transparent;
   transition: border-color 0.12s;
 }
-.entry-title a:hover { border-bottom-color: var(--gold); }
+.entry-title a:hover { border-bottom-color: var(--warm-gold); }
+
+.entry-subtitle {
+  font-family: var(--caslon-text);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
 
 .entry-meta {
   font-family: var(--plex-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   color: var(--muted);
   margin-bottom: 0.4rem;
+  text-transform: uppercase;
 }
 
 .entry-abstract {
   font-family: var(--plex-serif);
   font-size: 0.9rem;
-  color: var(--ink-mid);
-  line-height: 1.7;
+  color: var(--ink);
+  line-height: 1.72;
+  margin-top: 0.35rem;
 }
 
-/* Entry actions row */
 .entry-actions {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: 0.8rem;
   flex-wrap: wrap;
 }
 
-/* ─────────────────────────────────────────────────
-   PANEL (info box, like WipBanner)
-───────────────────────────────────────────────── */
+/* ══ PANEL (info / WIP banner) ══════════════════════════ */
 .panel {
-  background: var(--cream-dk);
-  border-left: 3px solid var(--navy);
-  padding: 0.9rem 1.1rem;
+  background: var(--jetscream);
+  border-left: 3px solid var(--warm-gold);
+  padding: 0.85rem 1.1rem;
   font-family: var(--plex-serif);
   font-size: 0.9rem;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-style: italic;
   margin-bottom: 2rem;
   border-radius: var(--radius);
 }
 
-/* ─────────────────────────────────────────────────
-   TWO-COLUMN GRID
-───────────────────────────────────────────────── */
+/* ══ TWO-COLUMN GRID ════════════════════════════════════ */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -415,42 +457,34 @@ a { color: inherit; }
 }
 @media (max-width: 580px) { .two-col { grid-template-columns: 1fr; } }
 
-/* Mini card — sharp top border */
-.mini-card {
-  border-top: 2px solid var(--navy);
-  padding-top: 0.75rem;
-}
+.mini-card { border-top: 2px solid var(--midnight); padding-top: 0.75rem; }
 .mini-card .mini-label {
   font-family: var(--plex-mono);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--warm-gold);
   margin-bottom: 0.3rem;
 }
 .mini-card .mini-title {
   font-family: var(--caslon-text);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--midnight);
   margin-bottom: 0.25rem;
   line-height: 1.3;
 }
 .mini-card .mini-body {
   font-family: var(--plex-serif);
   font-size: 0.88rem;
-  color: var(--ink-mid);
+  color: var(--ink);
   line-height: 1.65;
 }
 
-/* ─────────────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────────────── */
-#site-footer {
-  background: var(--navy);
-}
+/* ══ FOOTER ═════════════════════════════════════════════ */
+#site-footer { background: var(--midnight); }
 
-.footer-rule { height: 2px; background: var(--gold); }
+.footer-rule { height: 2px; background: var(--warm-gold); }
 
 .footer-inner {
   max-width: var(--max-w);
@@ -471,23 +505,19 @@ a { color: inherit; }
 
 .footer-copy {
   font-family: var(--plex-mono);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.08em;
   color: #6a7e99;
   margin-top: 0.15rem;
 }
 
-.footer-links {
-  list-style: none;
-  display: flex;
-  gap: 1.25rem;
-}
+.footer-links { list-style: none; display: flex; gap: 1.25rem; }
 .footer-links a {
   font-family: var(--plex-mono);
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold-lt);
+  color: var(--pale-gold);
   text-decoration: none;
 }
 .footer-links a:hover { color: var(--white); }

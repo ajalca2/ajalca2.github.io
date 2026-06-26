@@ -6,9 +6,194 @@
   <title>Aaron Jalca</title>
   <meta name="description" content="Academic, professional, and personal website of Aaron Jalca." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Home-page–only styles ── */
+
+    /* Masthead block: centered, like FA's cover page title */
+    .home-masthead {
+      text-align: center;
+      padding: 3rem var(--pad-x) 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .home-masthead-name {
+      font-family: var(--caslon);
+      font-size: clamp(2.6rem, 7vw, 4.2rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--midnight);
+      line-height: 1.05;
+    }
+
+    .home-masthead-vol {
+      font-family: var(--plex-serif);
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Hairline ornament below masthead title */
+    .masthead-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1rem 0 0;
+    }
+    .masthead-ornament span {
+      height: 1px;
+      width: 4rem;
+      background: var(--warm-gold);
+      display: block;
+    }
+    .masthead-ornament-glyph {
+      font-family: var(--caslon);
+      font-size: 0.85rem;
+      color: var(--warm-gold);
+      line-height: 1;
+    }
+
+    /* TOC-style content: left-aligned below masthead */
+    .home-toc {
+      padding: 2rem 0 0;
+    }
+
+    /* FA TOC entry: title / italic subtitle / small-caps author */
+    .toc-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 1.5rem;
+      row-gap: 0;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+    .toc-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .toc-body { min-width: 0; }
+
+    .toc-title {
+      font-family: var(--caslon-text);
+      font-size: 1.12rem;
+      font-weight: 400;       /* FA titles are regular weight, not bold */
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .toc-subtitle {
+      font-family: var(--caslon-text);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 0.12rem;
+      line-height: 1.4;
+    }
+
+    .toc-author {
+      font-family: var(--plex-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 0.3rem;
+    }
+
+    /* Page number + small rule — FA right column */
+    .toc-page {
+      text-align: right;
+      padding-top: 0.15rem;
+    }
+    .toc-page-num {
+      font-family: var(--plex-serif);
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+    .toc-page-rule {
+      width: 1.2rem;
+      height: 1px;
+      background: var(--midnight);
+      margin: 0.3rem 0 0 auto;
+    }
+
+    /* Staff / credits block — mirrors FA's back-of-masthead typography */
+    .staff-block {
+      margin-top: 2.75rem;
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 620px) {
+      .staff-block { grid-template-columns: 1fr; }
+      .home-masthead-name { letter-spacing: 0.03em; }
+    }
+
+    .staff-section { margin-bottom: 1.4rem; }
+
+    .staff-section-head {
+      font-family: var(--plex-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Dense name / title lines — FA staff credits style */
+    .staff-row {
+      font-family: var(--plex-serif);
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .staff-row strong {
+      font-weight: 500;
+    }
+    .staff-row .role {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* Portrait column */
+    .staff-portrait-col { position: relative; }
+    .staff-portrait-col img,
+    .staff-portrait-col .portrait-placeholder {
+      width: 100%;
+    }
+
+    /* Quick-contact table in portrait column */
+    .quick-contact {
+      margin-top: 1rem;
+      font-family: var(--plex-mono);
+      font-size: 0.68rem;
+      line-height: 1.9;
+      color: var(--ink);
+    }
+    .quick-contact a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .quick-contact a:hover { border-bottom-color: var(--teal); }
+    .quick-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.6rem;
+    }
+  </style>
 </head>
 <body data-page="home">
 
+  <!-- ══ SITE HEADER ════════════════════════════════════ -->
   <header id="site-header">
     <div class="header-inner">
       <a href="index.html" class="site-name">Aaron Jalca</a>
@@ -17,6 +202,7 @@
     </div>
   </header>
 
+  <!-- ══ NAV RIBBON ════════════════════════════════════ -->
   <nav id="site-nav" aria-label="Primary">
     <div class="nav-inner">
       <a href="index.html"    class="active">Home</a>
@@ -27,65 +213,142 @@
     </div>
   </nav>
 
+  <!-- ══ MAIN ══════════════════════════════════════════ -->
   <main id="page-main">
 
-    <div class="home-grid">
-      <div class="home-bio">
-        <p class="drop-cap">
-          Welcome. I am [your name / position]. My work sits at the intersection
-          of [field A] and [field B], with a particular interest in [topic]. I am
-          about as happy to have you here as you are to be here.
-        </p>
-        <p>
-          Researchers will find my publications and working papers on the
-          <a href="research.html" style="color:var(--navy);border-bottom:1px solid var(--gold);text-decoration:none;">Research</a>
-          tab. Recent essays and commentary appear under
-          <a href="writing.html" style="color:var(--navy);border-bottom:1px solid var(--gold);text-decoration:none;">Writing</a>.
-          A full curriculum vitae is available on the
-          <a href="cv.html" style="color:var(--navy);border-bottom:1px solid var(--gold);text-decoration:none;">C.V.</a>
-          page.
-        </p>
+    <!-- Centered masthead — mirrors FA cover title -->
+    <div class="home-masthead">
+      <h1 class="home-masthead-name">Aaron Jalca</h1>
+      <p class="home-masthead-vol">[Position] · [Institution] · [City, State]</p>
+      <div class="masthead-ornament" aria-hidden="true">
+        <span></span>
+        <span class="masthead-ornament-glyph">✦</span>
+        <span></span>
+      </div>
+    </div>
 
-        <table class="contact-table" style="margin-top:1.75rem;">
-          <thead>
-            <tr>
-              <th>Field</th>
-              <th>Detail</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Email</td>
-              <td><a href="mailto:amjalca@gmail.com">amjalca@gmail.com</a></td>
-            </tr>
-            <tr>
-              <td>GitHub</td>
-              <td><a href="https://github.com/ajalca2" target="_blank" rel="noopener">ajalca2</a></td>
-            </tr>
-            <tr>
-              <td>Affiliation</td>
-              <td>[Institution]</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- TOC-style navigation section — mirrors FA table of contents -->
+    <div class="home-toc">
+
+      <!-- Garnet italic section header + hairline rule — exactly as in FA TOC -->
+      <div class="section-head" style="margin-top:1.75rem;">
+        <span class="section-head-title">About This Site</span>
       </div>
 
-      <figure style="margin:0;">
+      <div class="toc-entry">
+        <div class="toc-body">
+          <p class="toc-title">Research</p>
+          <p class="toc-subtitle">Publications, working papers, and works in progress</p>
+          <p class="toc-author">Aaron Jalca</p>
+        </div>
+        <div class="toc-page">
+          <a href="research.html" class="btn btn-ghost" style="font-size:0.63rem;padding:0.35rem 0.7rem;">→</a>
+        </div>
+      </div>
+
+      <div class="toc-entry">
+        <div class="toc-body">
+          <p class="toc-title">Writing</p>
+          <p class="toc-subtitle">Essays, book reviews, and public commentary</p>
+          <p class="toc-author">Aaron Jalca</p>
+        </div>
+        <div class="toc-page">
+          <a href="writing.html" class="btn btn-ghost" style="font-size:0.63rem;padding:0.35rem 0.7rem;">→</a>
+        </div>
+      </div>
+
+      <div class="toc-entry">
+        <div class="toc-body">
+          <p class="toc-title">Curriculum Vitae</p>
+          <p class="toc-subtitle">Education, positions, awards, and service</p>
+          <p class="toc-author">Aaron Jalca</p>
+        </div>
+        <div class="toc-page">
+          <a href="cv.html" class="btn btn-ghost" style="font-size:0.63rem;padding:0.35rem 0.7rem;">→</a>
+        </div>
+      </div>
+
+    </div><!-- /.home-toc -->
+
+    <!-- Staff / credits block — two-column: bio left, portrait right -->
+    <div class="staff-block">
+
+      <!-- Left: dense biography in FA staff-credits style -->
+      <div>
+        <div class="section-head">
+          <span class="section-head-title">Background</span>
+        </div>
+
+        <div class="staff-section">
+          <p class="staff-section-head">Current Position</p>
+          <p class="staff-row">
+            <strong>[Your Name]</strong>
+            <span class="role"> — [Title], [Department]</span><br />
+            [Institution], [City, State]
+          </p>
+        </div>
+
+        <div class="staff-section">
+          <p class="staff-section-head">Research Interests</p>
+          <p class="staff-row">
+            [Field or topic A] · [Field or topic B] · [Field or topic C]
+          </p>
+        </div>
+
+        <div class="staff-section">
+          <p class="staff-section-head">Education</p>
+          <p class="staff-row">
+            <strong>[Degree]</strong><span class="role">, [University], [Year]</span><br />
+            <strong>[Degree]</strong><span class="role">, [University], [Year]</span><br />
+            <strong>[Degree]</strong><span class="role">, [College], [Year]</span>
+          </p>
+        </div>
+
+        <div class="staff-section">
+          <p class="staff-section-head">Statement</p>
+          <p class="staff-row" style="font-family:var(--plex-serif);font-size:0.92rem;line-height:1.75;color:var(--ink);">
+            Welcome. I am interested in [brief description of your intellectual
+            focus]. My work draws on [methods / disciplines] and attempts to
+            speak to audiences both inside and outside the academy. I am about
+            as happy to have you here as you are to be here.
+          </p>
+        </div>
+
+      </div><!-- /left col -->
+
+      <!-- Right: portrait + quick-contact -->
+      <div class="staff-portrait-col">
         <img
           src="photo.jpg"
           alt="Portrait of Aaron Jalca"
           class="home-portrait"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
         />
-        <div style="display:none;background:var(--navy-mid);color:var(--gold-lt);font-family:var(--caslon);font-style:italic;align-items:center;justify-content:center;padding:5rem 1rem;border:2px solid var(--navy);text-align:center;">
-          [Photo]
-        </div>
+        <div class="portrait-placeholder" style="display:none;">[Photo]</div>
         <figcaption class="portrait-caption">Aaron Jalca</figcaption>
-      </figure>
-    </div>
+
+        <div class="quick-contact">
+          <span class="quick-label">Email</span>
+          <a href="mailto:amjalca@gmail.com">amjalca@gmail.com</a>
+
+          <span class="quick-label">GitHub</span>
+          <a href="https://github.com/ajalca2" target="_blank" rel="noopener">ajalca2</a>
+
+          <span class="quick-label">Affiliation</span>
+          [Institution]
+
+          <span class="quick-label">Mailing</span>
+          [Department]<br />
+          [Street Address]<br />
+          [City, State ZIP]
+        </div>
+      </div><!-- /right col -->
+
+    </div><!-- /.staff-block -->
 
   </main>
 
+  <!-- ══ FOOTER ════════════════════════════════════════ -->
   <footer id="site-footer">
     <div class="footer-rule"></div>
     <div class="footer-inner">
