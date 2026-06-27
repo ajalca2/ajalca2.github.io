@@ -10,21 +10,21 @@
 
   <header id="site-header">
     <div class="header-inner">
-      <a href="index.html" class="site-name">Aaron Jalca</a>
-      <p class="site-byline">Academic · Professional · Personal</p>
-      <div class="header-rule"></div>
+      <ul class="header-nav header-nav-left" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="writing.html">Writing</a></li>
+      </ul>
+      <div class="header-title-wrap">
+        <a href="index.html" class="header-title">Aaron Jalca</a>
+        <span class="header-byline">[Position] · [Institution]</span>
+      </div>
+      <ul class="header-nav header-nav-right" role="list">
+        <li><a href="cv.html">C.V.</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
     </div>
   </header>
-
-  <nav id="site-nav" aria-label="Primary">
-    <div class="nav-inner">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="writing.html">Writing</a>
-      <a href="cv.html">C.V.</a>
-      <a href="contact.html" class="active">Contact</a>
-    </div>
-  </nav>
 
   <main id="page-main">
 
@@ -79,5 +79,8 @@
     </div>
   </footer>
 
+  <script>
+    (function(){var h=document.getElementById('site-header');function u(){h.classList.toggle('is-compact',window.scrollY>60);}window.addEventListener('scroll',u,{passive:true});u();})();
+  </script>
 </body>
 </html>
